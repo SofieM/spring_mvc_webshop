@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import spring.demo.model.Product;
 import spring.demo.service.ProductService;
@@ -27,16 +28,26 @@ public class HomeController {
         return "create";
     }
 
-    //På update siden skal vises navn, pris og beskrivelse for at specifikt produktid
-    @GetMapping("/update{ID}")
-    public String update(){
-
-        return "update";
-    }
-
     @PostMapping("/create")
     public String create(@ModelAttribute Product prod){
         productService.create(prod);
         return "redirect:/";
     }
+
+    //På update siden skal vises navn, pris og beskrivelse for et specifikt produktid (gøres med @PathVariable)
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable("id") long id, Model model){
+        //Tilføj Product med id til model view
+        model.addAttribute("prod", productService.read(id));
+        return "update";
+    }
+
+    //Post-metode, som opdaterer det specifikke produkt ved hjælp af id
+    @PostMapping("/update")
+    public String update(@ModelAttribute Product prod){
+        productService.update(prod);
+        return "redirect:/";
+    }
+
+    //Delete metode, som sletter et specifik id
 }

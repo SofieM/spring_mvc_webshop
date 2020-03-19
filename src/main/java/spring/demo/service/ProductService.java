@@ -27,4 +27,14 @@ public class ProductService {
     public void create(Product prod){
         productRepository.create(prod);
     }
+
+    public boolean update(Product product){
+        //boolean updateOK = false;
+        //boolean updateOK = productRepository.update(product);
+        return productRepository.update(product);
+    }
+
+    public Product read(long id){
+        return productRepository.read(id);
+    }
 }

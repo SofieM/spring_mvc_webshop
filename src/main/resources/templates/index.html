@@ -13,16 +13,19 @@
             <th>Varenavn</th>
             <th>Pris</th>
             <th>Beskrivelse</th>
+            <th></th>
         </tr>
         <tr th:each="product : ${prod}">
-            <td th:text="${product.id}"hidden>ID</td>
+            <td th:number="${product.id}"hidden>ID</td>
             <td th:text="${product.name}">Varenavn</td>
             <td th:text="${product.price}">Pris</td>
             <td th:text="${product.description}">Beskrivelse</td>
+            <td>
+                <a th:href="@{'update/' +${product.id}}">Opdater</a>
+            </td>
         </tr>
     </table>
     <a href="create">Tilføj nyt produkt</a>
-    <a href="update">Opdater produkt</a>
 
 </div>
 
