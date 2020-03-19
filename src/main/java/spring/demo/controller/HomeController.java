@@ -27,7 +27,8 @@ public class HomeController {
         return "create";
     }
 
-    @GetMapping("/update")
+    //På update siden skal vises navn, pris og beskrivelse for at specifikt produktid
+    @GetMapping("/update{ID}")
     public String update(){
 
         return "update";
