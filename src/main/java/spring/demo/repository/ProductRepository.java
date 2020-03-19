@@ -59,11 +59,14 @@ public class ProductRepository implements ICrudRepository<Product>{
     @Override
     public boolean delete(long id) {
         for (int i = 0; i <products.size() ; i++) {
+            //Hvis id'et, på index 'i' i arrayet stemmet overens med id (som kommer fra delete metoden i homeController)
+            //Så slettes det produkt der står på index i - og der returneres true pga. success
             if(products.get(i).getId() == id){
                 products.remove(i);
                 return true;
             }
         }
+        //Hvis id'et ikke findes i arrayet, returneres false
         return false;
     }
 

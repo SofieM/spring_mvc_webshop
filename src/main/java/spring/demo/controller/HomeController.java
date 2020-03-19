@@ -28,6 +28,7 @@ public class HomeController {
         return "create";
     }
 
+    //tager imod brugerinput til et nyt product-objekt, og sender det videre, så det gemmes i repo-listen products
     @PostMapping("/create")
     public String create(@ModelAttribute Product prod){
         productService.create(prod);
@@ -42,18 +43,19 @@ public class HomeController {
         return "update";
     }
 
-    //Post-metode, som opdaterer det specifikke produkt ved hjælp af id
+    //Post-metode, som opdaterer et specifikt produkt ved hjælp af id
     @PostMapping("/update")
     public String update(@ModelAttribute Product prod){
         productService.update(prod);
         return "redirect:/";
     }
 
+    //Delete metode, som sletter et specifik id
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id){
         productService.delete(id);
         return "redirect:/";
     }
 
-    //Delete metode, som sletter et specifik id
+
 }
