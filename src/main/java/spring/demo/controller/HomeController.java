@@ -49,5 +49,11 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") long id){
+        productService.delete(id);
+        return "redirect:/";
+    }
+
     //Delete metode, som sletter et specifik id
 }

@@ -14,6 +14,7 @@
             <th>Pris</th>
             <th>Beskrivelse</th>
             <th></th>
+            <th></th>
         </tr>
         <tr th:each="product : ${prod}">
             <td th:number="${product.id}"hidden>ID</td>
@@ -22,6 +23,9 @@
             <td th:text="${product.description}">Beskrivelse</td>
             <td>
                 <a th:href="@{'update/' +${product.id}}">Opdater</a>
+            </td>
+            <td>
+                <a th:href="@{'delete/' + ${product.id}}">Slet</a>
             </td>
         </tr>
     </table>

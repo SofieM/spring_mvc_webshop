@@ -51,13 +51,19 @@ public class ProductRepository implements ICrudRepository<Product>{
                 products.set(i,product);
                 return true;
             }
-            //elements med id ikke fundet
         }
+        //hvis elements med id ikke fundet
         return false;
     }
 
     @Override
     public boolean delete(long id) {
+        for (int i = 0; i <products.size() ; i++) {
+            if(products.get(i).getId() == id){
+                products.remove(i);
+                return true;
+            }
+        }
         return false;
     }
 
