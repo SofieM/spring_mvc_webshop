@@ -21,4 +21,8 @@ public class ProductRepository {
     public List<Product> readAll(){
         return products;
     }
+    //tilføjer nyt produkt til products-listen
+    public void create(Product prod){
+        products.add(prod);
+    }
 }

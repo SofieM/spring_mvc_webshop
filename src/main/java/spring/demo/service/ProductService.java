@@ -23,4 +23,8 @@ public class ProductService {
 
         return allProducts;
     }
+
+    public void create(Product prod){
+        productRepository.create(prod);
+    }
 }
